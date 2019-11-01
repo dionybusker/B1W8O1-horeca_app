@@ -1,20 +1,27 @@
 // script
 
+var linebreak = "<br>";
+
 function addOrder() { // bestellingen worden toegevoegd
     // code
     var order = "Welke bestelling wilt u toevoegen?";
     var options = "U kunt kiezen uit fris, bier of wijn.";
     var quit = "Als u de rekening wilt hebben, vul dan 'stop' in.";
     var question = prompt(order + "\n" + options + "\n" + quit);
+
     if (question == "fris") {
-        prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?");
+        var total = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?");
     } else if (question == "bier") {
-        prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?");
+        var total = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?");
     } else if (question == "wijn") {
-        prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?");
+        var total = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?");
+    } else if (question == "stop") {
+        return false;
     } else {
         alert("Sorry, maar dat hebben wij niet. U kunt alleen kiezen uit fris, bier of wijn.");
     }
+    document.write("Dit is uw bestelling: " + total + "× " + question + linebreak);
+
     addOrder();
 }
 
