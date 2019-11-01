@@ -1,9 +1,5 @@
 // script
 
-function showBill() { // de rekening wordt getoond
-    // code
-}
-
 function addOrder() { // bestellingen worden toegevoegd
     // code
     var order = "Welke bestelling wilt u toevoegen?";
@@ -20,6 +16,10 @@ function addOrder() { // bestellingen worden toegevoegd
         alert("Sorry, maar dat hebben wij niet. U kunt alleen kiezen uit fris, bier of wijn.");
     }
     addOrder();
+}
+
+function showBill() { // de rekening wordt getoond
+    // code
 }
 
 function calcPrice() { // prijzen worden uitgerekend
