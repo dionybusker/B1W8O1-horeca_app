@@ -2,23 +2,28 @@
 
 var linebreak = "<br>";
 
+// var frisPrice = 2;
+// var bierPrice = 2.5;
+// var wijnPrice = 3;
+// var totalPrice;
+
 function addOrder() { // bestellingen worden toegevoegd
-    // code
     var order = "Welke bestelling wilt u toevoegen?";
     var options = "U kunt kiezen uit fris, bier of wijn.";
     var quit = "Als u de rekening wilt hebben, vul dan 'stop' in.";
+    var nan = "Gelieve een nummer in te voeren.";
+    
     var question = prompt(order + "\n" + options + "\n" + quit);
 
-    if (question == "fris") {
-        var total = prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?");
-    } else if (question == "bier") {
-        var total = prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?");
-    } else if (question == "wijn") {
-        var total = prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?");
+    if (question == "fris" || question == "bier" || question == "wijn") {
+        var total = parseInt(prompt("Hoeveel " + question + " wilt u toevoegen aan uw bestelling?"));
+        if (Number.isNaN(total)) {
+            alert(nan);
+        }
     } else if (question == "stop") {
         return false;
     } else {
-        alert("Sorry, maar dat hebben wij niet. U kunt alleen kiezen uit fris, bier of wijn.");
+        alert("U heeft een ongeldige invoer gedaan. Uw bestelling kan niet worden toegevoegd.");
     }
     document.write("Dit is uw bestelling: " + total + "× " + question + linebreak);
 
@@ -27,6 +32,8 @@ function addOrder() { // bestellingen worden toegevoegd
 
 function showBill() { // de rekening wordt getoond
     // code
+    
+    document.write("Dit is uw bestelling: " + total + "× " + question + linebreak);
 }
 
 function calcPrice() { // prijzen worden uitgerekend
