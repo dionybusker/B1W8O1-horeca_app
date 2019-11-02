@@ -4,9 +4,9 @@ var linebreak = "<br>";
 
 var valid = true;
 
-// var frisPrice = 2;
-// var bierPrice = 2.5;
-// var wijnPrice = 3;
+// const FRIS_PRICE = 2;
+// const BIER_PRICE = 2.5;
+// const WIJN_PRICE = 3;
 // var totalPrice;
 
 function addOrder() { // bestellingen worden toegevoegd
@@ -47,5 +47,5 @@ function calcPrice() { // prijzen worden uitgerekend
     // code
 }
 
-// addOrder();
+addOrder();
 // showBill();
