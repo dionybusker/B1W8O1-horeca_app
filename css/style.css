@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(210, 210, 210);
+    font-family: Calibri;
 }
 
 .grid-container {
@@ -12,30 +13,50 @@ body {
     width: 700px;
     display: grid;
     grid-template-areas: 'header'
+                         'rekening'
                          'main'
                          'footer';
-    grid-template-rows: minmax(50xp, auto);
-    grid-template-columns: repeat(1, 1fr);
-}
-
-header { grid-area: header; }
-main { grid-area: main; }
-footer { grid-area: footer; }
-
-.grid-main {
-    grid-template-areas: 'rekening rekening rekening rekening'
-                         'drankje hoeveelheid prijs totaal'
-                         'empty empty betalen betalen'
-                         'extra extra extra extra';
     grid-template-rows: minmax(50px, auto);
     grid-template-columns: repeat(4, 1fr);
 }
 
-.empty { grid-area: empty; width: 125px; display: inline-block; }
-.rekening { grid-area: rekening; width: 125px; display: inline-block; }
-.drankje { grid-area: drankje; width: 125px; display: inline-block; }
-.hoeveelheid { grid-area: hoeveelheid; width: 125px; display: inline-block; }
-.prijs { grid-area: prijs; width: 125px; display: inline-block; }
-.totaal { grid-area: totaal; width: 125px; display: inline-block; }
-.betalen { grid-area: betalen; width: 125px; display: inline-block; }
-.lipsum { grid-area: extra; width: 125px; display: inline-block; }
+header { grid-area: header; }
+.rekening { grid-area: rekening; }
+main { grid-area: main; }
+footer { grid-area: footer; }
+
+.grid-main {
+    display: grid;
+    grid-template-areas: 'bestelling hoeveelheid prijs totaal'
+                         'order amount price total-price'
+                         'empty empty betalen to-pay'
+                         'extra extra extra extra';
+    grid-template-rows: minmax(auto, auto);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.empty { grid-area: empty; }
+.bestelling { grid-area: bestelling; }
+#order { grid-area: order; }
+.hoeveelheid { grid-area: hoeveelheid; }
+#amount { grid-area: amount; }
+.prijs { grid-area: prijs; }
+#price { grid-area: price; }
+.totaal { grid-area: totaal; }
+#total-price { grid-area: total-price; }
+.betalen { grid-area: betalen; }
+#to-pay { grid-area: to-pay; }
+.lipsum { grid-area: extra; }
+
+header {
+    width: 700px;
+    height: auto;
+}
+
+p {
+    margin: 5px 10px;
+}
+
+h1 {
+    text-align: center;
+}

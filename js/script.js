@@ -2,119 +2,147 @@
 
 var linebreak = "<br>";
 
-var valid = true;
-
-const PRICE_FRIS = 2;
-const PRICE_BIER = 2.5;
-const PRICE_WIJN = 3;
-// var totalPrice;
-
 var aantalFris = 0;
 var aantalBier = 0;
 var aantalWijn = 0;
+var aantalSchaalKlein = 0;
+var aantalSchaalGroot = 0;
 
-function addOrder() { // bestellingen worden toegevoegd
+const PRICE_FRIS = 2.00;
+const PRICE_BIER = 2.50;
+const PRICE_WIJN = 3.00;
+const PRICE_SCHAALKLEIN = 3.00;
+const PRICE_SCHAALGROOT = 5.00;
+
+function addOrder() {
+    // de vraag welke bestelling de klant wilt doen, wordt gesteld 
     var question = "Welke bestelling wilt u toevoegen?";
-    var options = "U kunt kiezen uit fris, bier of wijn.";
+    var options = "U kunt kiezen uit fris, bier, wijn of een snack.";
     var quit = "Als u de rekening wilt hebben, vul dan 'stop' in.";
-    // var nan = "Gelieve een nummer in te voeren.";
     
     this.text = prompt(question + "\n" + options + "\n" + quit);
 
-    if (this.text == "fris" || this.text == "bier" || this.text == "wijn") {
-        drinks();
-        // valid = false;
-        // while (!valid) {
-        //     aantalFris = aantalFris + parseInt(prompt("Hoeveel fris wilt u toevoegen aan uw bestelling?"));
-        //     if (Number.isNaN(aantalFris)) {
-        //         alert(nan);
-        //     } else {
-        //         alert("Het aantal fris is toegevoegd aan uw bestelling.")
-        //         valid = true;
-        //     }
-        // }
-    // } else if (order == "bier") {
-    //     valid = false;
-    //     while (!valid) {
-    //         aantalBier = aantalBier + parseInt(prompt("Hoeveel bier wilt u toevoegen aan uw bestelling?"));
-    //         if (Number.isNaN(aantalBier)) {
-    //             alert(nan);
-    //         } else {
-    //             alert("Het aantal bier is toegevoegd aan uw bestelling.")
-    //             valid = true;
-    //         }
-    //     }
-    // } else if (order == "wijn") {
-    //     valid = false;
-    //     while (!valid) {
-    //         aantalWijn = aantalWijn + parseInt(prompt("Hoeveel wijn wilt u toevoegen aan uw bestelling?"));
-    //         if (Number.isNaN(aantalWijn)) {
-    //             alert(nan);
-    //         } else {
-    //             alert("Het aantal wijn is toegevoegd aan uw bestelling.")
-    //             valid = true;
-    //         }
-    //     }
-    } else if (this.text == "stop") {
-        showBill();
-        // return false;
+    if (this.text.toLowerCase() == "fris" || this.text.toLowerCase() == "bier" || this.text.toLowerCase() == "wijn") {
+        orderDrinks();
+    } else if (this.text.toLowerCase() == "snack") {
+        orderSnacks();
+    } else if (this.text.toLowerCase() == "stop") {
+        calcPrice();
     } else {
         alert("U heeft een ongeldige invoer gedaan. Uw bestelling kan niet worden toegevoegd.");
         addOrder();
     }
-    // document.write("Dit is uw bestelling: " + total + "× " + order + linebreak);
-
-}
-
-function drinks() {
-    // code
-    var nan = "Gelieve een nummer in te voeren.";
-
-    drink = parseInt(prompt("Hoeveel " + this.text + " wilt u toevoegen aan uw bestelling?"));
-    if (Number.isNaN(drink)) {
-        alert(nan);
-        drinks();
-    } else {
-        if (this.text == "fris") {
-            aantalFris = aantalFris + drink;
-            addOrder();
-        } else if (this.text == "bier") {
-            aantalBier = aantalBier + drink;
-            addOrder();
-        } else if (this.text == "wijn") {
-            aantalWijn = aantalWijn + drink;
-            addOrder();
-        }
-        alert("Het aantal " + this.text + " is toegevoegd aan uw bestelling.")
-    }
-}
-
-
-function showBill() { // de rekening wordt getoond
-    // code
-    var totalPrice = (aantalFris * PRICE_FRIS) + (aantalBier * PRICE_BIER) + (aantalWijn * PRICE_WIJN);
-
-    if (aantalFris > 0) {
-        document.write(`U heeft ${aantalFris} fles(jes) fris besteld. ${linebreak} Een flesje fris kost € ${PRICE_FRIS}. De totaalprijs is € ${aantalFris * PRICE_FRIS}. ${linebreak}`);
-    }
-    if (aantalBier > 0) {
-        document.write(`U heeft ${aantalBier} fles(jes) bier besteld. ${linebreak} Een flesje bier kost € ${PRICE_BIER}. De totaalprijs is € ${aantalBier * PRICE_BIER}. ${linebreak}`);
-    }
-    if (aantalWijn > 0) {
-        document.write(`U heeft ${aantalWijn} glas/glazen wijn besteld. ${linebreak} Een glas wijn kost € ${PRICE_WIJN}. De totaalprijs is € ${aantalWijn * PRICE_WIJN}. ${linebreak}`);
-    }
-
-    document.write(`<strong>Uw totaalprijs is: € ${totalPrice}.</strong`);
-
-    // addOrder();
-    // document.write("Dit is uw bestelling: " + aantalFris + "× " + order + linebreak);
-    // document.write("Dit is uw bestelling: " + aantalBier + "× " + order + linebreak);
-    // document.write("Dit is uw bestelling: " + aantalWijn + "× " + order + linebreak);
-}
-
-function calcPrice() { // prijzen worden uitgerekend
-    // code
 }
 
 addOrder();
-// showBill();
+
+function orderDrinks() {
+    // de bestellingen voor het drinken wordt gedaan
+    var nan = "Gelieve een nummer in te voeren.";
+
+    var drinks = parseInt(prompt(`Hoeveel ${this.text.toLowerCase()} wilt u toevoegen aan uw bestelling?`));
+    if (Number.isNaN(drinks)) {
+        alert(nan);
+        orderDrinks();
+    } else {
+        if (this.text.toLowerCase() == "fris") {
+            aantalFris = aantalFris + drinks;
+            addOrder();
+        } else if (this.text.toLowerCase() == "bier") {
+            aantalBier = aantalBier + drinks;
+            addOrder();
+        } else if (this.text.toLowerCase() == "wijn") {
+            aantalWijn = aantalWijn + drinks;
+            addOrder();
+        }
+    }
+}
+
+function orderSnacks() {
+    // de bestelling voor de snack wordt gedaan
+    var nan = "Gelieve een nummer in te voeren.";
+
+    var snacks = parseInt(prompt("Welke bitterbalschaal wilt u toevoegen aan uw bestelling? \n U kunt kiezen uit 8 of 16 stuks."));
+    if (Number.isNaN(snacks)) {
+        alert(nan);
+        orderSnacks();
+    } else if (snacks == 8) {
+        var schaalKlein = parseInt(prompt("Hoeveel bitterbalschalen van 8 stuks wilt u toevoegen aan uw bestelling?"));
+        if (Number.isNaN(schaalKlein)) {
+            alert(nan);
+            orderSnacks();
+        } else {
+            aantalSchaalKlein = aantalSchaalKlein + schaalKlein;
+            addOrder();
+        }
+    } else if (snacks == 16) {
+        var schaalGroot = parseInt(prompt("Hoeveel bitterbalschalen van 16 stuks wilt u toevoegen aan uw bestelling?"));
+        if (Number.isNaN(schaalGroot)) {
+            alert(nan);
+            orderSnacks();
+        } else {
+            aantalSchaalGroot = aantalSchaalGroot + schaalGroot;
+            addOrder();
+        }
+    } else {
+        alert("U kunt alleen kiezen uit een schaal van 8 of 16 stuks.");
+        orderSnacks();
+    }
+}
+
+function calcPrice() {
+    // de totaalprijzen van de gehele bestelling wordt berekend
+    var totalPrice = (aantalFris * PRICE_FRIS) + (aantalBier * PRICE_BIER) + (aantalWijn * PRICE_WIJN) + (aantalSchaalKlein * PRICE_SCHAALKLEIN) + (aantalSchaalGroot * PRICE_SCHAALGROOT);
+
+    if (aantalFris > 0) {
+        document.getElementById("order").innerHTML = `Fris ${linebreak}`;
+        document.getElementById("amount").innerHTML = aantalFris + linebreak;
+        document.getElementById("price").innerHTML = `€ ${PRICE_FRIS} ${linebreak}`;
+        document.getElementById("total-price").innerHTML = `€ ${aantalFris * PRICE_FRIS} ${linebreak}`;
+    }
+    if (aantalBier > 0) {
+        document.getElementById("order").innerHTML += `Bier ${linebreak}`;
+        document.getElementById("amount").innerHTML += aantalBier + linebreak;
+        document.getElementById("price").innerHTML += `€ ${PRICE_BIER} ${linebreak}`;
+        document.getElementById("total-price").innerHTML += `€ ${aantalBier * PRICE_BIER} ${linebreak}`;
+    }
+    if (aantalWijn > 0) {
+        document.getElementById("order").innerHTML += `Wijn ${linebreak}`;
+        document.getElementById("amount").innerHTML += aantalWijn + linebreak;
+        document.getElementById("price").innerHTML += `€ ${PRICE_WIJN} ${linebreak}`;
+        document.getElementById("total-price").innerHTML += `€ ${aantalWijn * PRICE_WIJN} ${linebreak}`;
+    }
+    if (aantalSchaalKlein > 0) {
+        document.getElementById("order").innerHTML += `Bitterballen 8 st. ${linebreak}`;
+        document.getElementById("amount").innerHTML += aantalSchaalKlein + linebreak;
+        document.getElementById("price").innerHTML += `€ ${PRICE_SCHAALKLEIN} ${linebreak}`;
+        document.getElementById("total-price").innerHTML += `€ ${aantalSchaalKlein * PRICE_SCHAALKLEIN} ${linebreak}`;
+    }
+    if (aantalSchaalGroot > 0) {
+        document.getElementById("order").innerHTML += `Bitterballen 16 st. ${linebreak}`;
+        document.getElementById("amount").innerHTML += aantalSchaalGroot + linebreak;
+        document.getElementById("price").innerHTML += `€ ${PRICE_SCHAALGROOT} ${linebreak}`;
+        document.getElementById("total-price").innerHTML += `€ ${aantalSchaalGroot * PRICE_SCHAALGROOT} ${linebreak}`;
+    }
+
+    document.getElementById("to-pay").innerHTML = `<strong> € ${totalPrice} </strong>`;
+}
+
+function showBill() {
+    // de rekening wordt geprint naar het scherm
+    if (aantalFris > 0) {
+        calcPrice();
+    }
+    if (aantalBier > 0) {
+        calcPrice();
+    }
+    if (aantalWijn > 0) {
+        calcPrice();
+    }
+    if (aantalSchaalKlein > 0) {
+        calcPrice();
+    }
+    if (aantalSchaalGroot > 0) {
+        calcPrice();
+    }
+}
