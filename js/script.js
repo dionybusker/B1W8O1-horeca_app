@@ -1,4 +1,4 @@
-// script
+// globale variabelen/constanten, deze variabelen kunnen overal gebruikt worden
 
 var linebreak = "<br>";
 
