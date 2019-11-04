@@ -97,35 +97,35 @@ function calcPrice() {
     if (aantalFris > 0) {
         document.getElementById("order").innerHTML = `Fris ${linebreak}`;
         document.getElementById("amount").innerHTML = aantalFris + linebreak;
-        document.getElementById("price").innerHTML = `€ ${PRICE_FRIS} ${linebreak}`;
-        document.getElementById("total-price").innerHTML = `€ ${aantalFris * PRICE_FRIS} ${linebreak}`;
+        document.getElementById("price").innerHTML = `€ ` + parseFloat(PRICE_FRIS).toFixed(2) + linebreak;
+        document.getElementById("total-price").innerHTML = `€ ` + parseFloat(aantalFris * PRICE_FRIS).toFixed(2) + linebreak;
     }
     if (aantalBier > 0) {
         document.getElementById("order").innerHTML += `Bier ${linebreak}`;
         document.getElementById("amount").innerHTML += aantalBier + linebreak;
-        document.getElementById("price").innerHTML += `€ ${PRICE_BIER} ${linebreak}`;
-        document.getElementById("total-price").innerHTML += `€ ${aantalBier * PRICE_BIER} ${linebreak}`;
+        document.getElementById("price").innerHTML += `€ ` + parseFloat(PRICE_BIER).toFixed(2) + linebreak;
+        document.getElementById("total-price").innerHTML += `€ ` + parseFloat(aantalBier * PRICE_BIER).toFixed(2) + linebreak;
     }
     if (aantalWijn > 0) {
         document.getElementById("order").innerHTML += `Wijn ${linebreak}`;
         document.getElementById("amount").innerHTML += aantalWijn + linebreak;
-        document.getElementById("price").innerHTML += `€ ${PRICE_WIJN} ${linebreak}`;
-        document.getElementById("total-price").innerHTML += `€ ${aantalWijn * PRICE_WIJN} ${linebreak}`;
+        document.getElementById("price").innerHTML += `€ ` + parseFloat(PRICE_WIJN).toFixed(2) + linebreak;
+        document.getElementById("total-price").innerHTML += `€ ` + parseFloat(aantalWijn * PRICE_WIJN).toFixed(2) + linebreak;
     }
     if (aantalSchaalKlein > 0) {
         document.getElementById("order").innerHTML += `Bitterballen 8 st. ${linebreak}`;
         document.getElementById("amount").innerHTML += aantalSchaalKlein + linebreak;
-        document.getElementById("price").innerHTML += `€ ${PRICE_SCHAALKLEIN} ${linebreak}`;
-        document.getElementById("total-price").innerHTML += `€ ${aantalSchaalKlein * PRICE_SCHAALKLEIN} ${linebreak}`;
+        document.getElementById("price").innerHTML += `€ ` + parseFloat(PRICE_SCHAALKLEIN).toFixed(2) + linebreak;
+        document.getElementById("total-price").innerHTML += `€ ` + parseFloat(aantalSchaalKlein * PRICE_SCHAALKLEIN).toFixed(2) + linebreak;
     }
     if (aantalSchaalGroot > 0) {
         document.getElementById("order").innerHTML += `Bitterballen 16 st. ${linebreak}`;
         document.getElementById("amount").innerHTML += aantalSchaalGroot + linebreak;
-        document.getElementById("price").innerHTML += `€ ${PRICE_SCHAALGROOT} ${linebreak}`;
-        document.getElementById("total-price").innerHTML += `€ ${aantalSchaalGroot * PRICE_SCHAALGROOT} ${linebreak}`;
+        document.getElementById("price").innerHTML += `€ ` + parseFloat(PRICE_SCHAALGROOT).toFixed(2) + linebreak;
+        document.getElementById("total-price").innerHTML += `€ ` + parseFloat(aantalSchaalGroot * PRICE_SCHAALGROOT).toFixed(2) + linebreak;
     }
 
-    document.getElementById("to-pay").innerHTML = `<strong> € ${totalPrice} </strong>`;
+    document.getElementById("to-pay").innerHTML = `<strong> € ` + parseFloat(totalPrice).toFixed(2) + `</strong>`;
 }
 
 function showBill() {
